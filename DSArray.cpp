@@ -69,7 +69,7 @@ int DSArray::getCapacity() const {
 }
 
 bool DSArray::isFull() const {
-	return false;
+	return size == capacity;
 }
 
 void DSArray::clear() {
@@ -106,7 +106,6 @@ bool DSArray::makebigger() {
 	for (int i = 0; i < size; i++)
 		tmp[i] = data[i];
 
-	data = NULL;
 	data = tmp;
 
 	return true;

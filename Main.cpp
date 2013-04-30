@@ -1,5 +1,5 @@
 #include "Object.hpp"
-#include "DSArray.hpp"
+#include "SLList.hpp"
 #include <iostream>
 #include <iomanip>
 #include <typeinfo>
@@ -35,9 +35,11 @@ bool Nombre::equals(Object* other) const {
 void printList(ADTList&);
 
 int main(int argc, char* argv[]) {
-	DSArray list;
+	SLList list;
 	list.insert(new Nombre("a"), 0);
 	list.insert(new Nombre("b"), 1);
+	printList(list);
+	list.clear();
 	list.insert(new Nombre("c"), 2);
 	list.insert(new Nombre("d"), 0);
 	list.insert(new Nombre("e"), 1);
@@ -45,13 +47,14 @@ int main(int argc, char* argv[]) {
 	printList(list);
 	
 	list.remove(0);
-	list.remove(3);
+	list.remove(1);
 	printList(list);
-
+	
 	cout << list.first()->toString() << endl
 		 << list.last()->toString() << endl;
-
-	cout << list.indexOf(new Nombre("e")) << endl;	
+	
+	cout << list.indexOf(new Nombre("e")) << endl
+	 	 << list.indexOf(new Nombre("j")) << endl;	
 	
 	return 0;
 }
